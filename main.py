@@ -1,25 +1,25 @@
 # import
 import random
-# create random agents
-# # define things used for agents
-n = 5
-data = {} # where all the agents will be stored
-names = ["Zeus", "Poseidon", "Hestia", "Hermes", "Hera", "Hephaestus", "Hades", "Dionysus", "Demeter", "Athena", "Artemis", "Ares", "Apollo", "Aphrodite"]
-average = 0
-scores = []
-winners = {}
-for i in range(n): # stores all random agents in data with random values
-            data[i] = {
-                "data": {
-                "score": random.randint(0, 100), # like this
-                },
-                "name": random.choice(names) # and this
-            }
 def iterate(times=15, amountproduce=2):
-    global data
-    global scores
-    global winners
+    # define things used for agents
+    n = 5
+    data = {} # where all the agents will be stored
+    names = ["Zeus", "Poseidon", "Hestia", "Hermes", "Hera", "Hephaestus", "Hades", "Dionysus", "Demeter", "Athena", "Artemis", "Ares", "Apollo", "Aphrodite"]
+    average = 0
+    scores = []
+    winners = {}
+    for i in range(n): # stores all random agents in data with random values
+        data[i] = {
+            "data": {
+            "score": random.randint(0, 100), # like this
+            },
+            "name": random.choice(names) # and this
+        }
     t = 0
+    # define things used for agents
+    average = 0
+    scores = []
+    winners = {}
     for i in range(times):
         for k, v in data.items(): # find average
             scores.append(v["data"]["score"])
@@ -39,6 +39,10 @@ def iterate(times=15, amountproduce=2):
             }
         t += 1
         print(str(int(t / times * 100)) + "%, iter nr. " + str(t)) # give the percentage of progress
-    return [sum(scores) / len(scores), data]
-# loop
-print(iterate(20, 2))
+    return {"avg": sum(scores) / len(scores), "data": data}
+# this last part is an example
+def example(): # and it just gets the highest from 15 15gen 2child generations
+    iters = []
+    for i in range(15):
+        iters.append(iterate(15)["avg"])
+    print(max(iters))
