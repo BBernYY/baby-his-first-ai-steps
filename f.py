@@ -1,7 +1,8 @@
 import math
+import random
 def rate(l):
     scores = {}
-    num = 246341
+    num = 100000000
     for i in l:
         if i == 0:
             scores[i] = num
